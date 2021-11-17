@@ -59,7 +59,6 @@ dependencies {
     implementation "org.microg.gms:remote-droid-guard:$remoteDroidGuardVersion"
 
     withMapboxImplementation project(':play-services-maps-core-mapbox')
-    withVtmImplementation project(':play-services-maps-core-vtm')
 
     // AndroidX UI
     implementation "androidx.multidex:multidex:$multidexVersion"
