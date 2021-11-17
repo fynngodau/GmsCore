@@ -5,7 +5,6 @@ build/
 .gradle/
 .idea/
 user.gradle
-local.properties
 .directory
 
 .settings
