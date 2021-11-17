@@ -58,8 +58,6 @@ dependencies {
     implementation "org.microg:wearable:$wearableVersion"
     implementation "org.microg.gms:remote-droid-guard:$remoteDroidGuardVersion"
 
-    withMapboxImplementation project(':play-services-maps-core-mapbox')
-
     // AndroidX UI
     implementation "androidx.multidex:multidex:$multidexVersion"
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
