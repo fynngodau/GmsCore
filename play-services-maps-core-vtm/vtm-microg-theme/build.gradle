@@ -1,11 +1,43 @@
-apply plugin: 'java'
-apply plugin: 'maven'
+apply plugin: "com.android.library"
 
 dependencies {
-    compile "org.microg:vtm:0.9.1-mod"
+    implementation "org.microg:vtm:0.9.1-mod"
 }
 
 sourceSets {
     main.java.srcDirs = ['src']
     main.resources.srcDirs = ['resources']
+}
+
+android {
+    compileSdkVersion androidCompileSdk()
+    buildToolsVersion "$androidBuildVersionTools"
+
+    defaultConfig {
+        versionName "temp"
+        versionCode 1
+
+        minSdkVersion androidMinSdk()
+        targetSdkVersion androidTargetSdk()
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
+    }
+
+    lintOptions {
+        disable "MissingTranslation", "InvalidPackage", "BatteryLife", "ImpliedQuantity", "MissingQuantity"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
