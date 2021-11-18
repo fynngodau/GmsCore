@@ -14,8 +14,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.provider.Settings
-import android.util.Log
-import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.location.LocationManagerCompat
 import androidx.core.os.bundleOf
@@ -133,7 +131,7 @@ class ExposureNotificationsPreferencesFragment : PreferenceFragmentCompat() {
             val advertisingSupported = if (bluetoothSupported == true) AdvertiserService.isSupported(appContext) else bluetoothSupported
 
             val nearbyPermissions = arrayOf("android.permission.BLUETOOTH_ADVERTISE", "android.permission.BLUETOOTH_SCAN")
-            val nearbyPermissionsGranted = Build.VERSION.SDK_INT >= 31 && nearbyPermissions.all {
+            val nearbyPermissionsGranted = Build.VERSION.SDK_INT >= 31 || nearbyPermissions.all {
                 ContextCompat.checkSelfPermission(appContext, it) == PackageManager.PERMISSION_GRANTED
             }
             exposureNearbyNotGranted.isVisible = enabled && !nearbyPermissionsGranted
