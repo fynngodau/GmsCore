@@ -51,7 +51,6 @@ afterEvaluate {
             repositories {
                 maven {
                     name = 'sonatype'
-                    url = ''
                     credentials {
                         username project.getProperty('sonatype.username')
                         password project.getProperty('sonatype.password')
