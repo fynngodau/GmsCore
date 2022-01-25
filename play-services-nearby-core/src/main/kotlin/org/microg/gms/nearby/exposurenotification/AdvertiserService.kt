@@ -36,7 +36,7 @@ import java.util.*
 @TargetApi(21)
 @ForegroundServiceInfo("Exposure Notification")
 class AdvertiserService : LifecycleService() {
-    private val version = VERSION_1_0
+    private val version = VERSION_1_1
     private var advertising = false
     private var wantStartAdvertising = false
     private val advertiser: BluetoothLeAdvertiser?
@@ -163,7 +163,7 @@ class AdvertiserService : LifecycleService() {
                 try {
                     advertiser.startAdvertising(settings, data, callback)
                 } catch (e: SecurityException) {
-                    Log.e(TAG, "Couldn't start advertising: Need android.permission.BLUETOOTH_ADVERTISE permission.", )
+                    Log.e(TAG, "Couldn't start advertising.", )
                 }
             }
             synchronized(this) { advertising = true }
@@ -218,7 +218,11 @@ class AdvertiserService : LifecycleService() {
                 Log.i(TAG, "Tried calling stopAdvertisingSet without android.permission.BLUETOOTH_ADVERTISE permission.", )
             }
         } else {
-            advertiser?.stopAdvertising(callback)
+            try {
+                advertiser?.stopAdvertising(callback)
+            } catch (e: SecurityException) {
+                Log.i(TAG, "stopAdvertising() failed with a SecurityException. Maybe some permissions are missing?", )
+            }
         }
         handler.postDelayed(startLaterRunnable, 1000)
     }

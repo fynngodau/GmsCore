@@ -5,8 +5,14 @@ dependencies {
 }
 
 sourceSets {
-    main.java.srcDirs = ['src']
-    main.resources.srcDirs = ['resources']
+    main {
+        java {
+            srcDir 'src'
+        }
+        resources {
+            srcDir 'resources'
+        }
+    }
 }
 
 android {
