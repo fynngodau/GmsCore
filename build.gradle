@@ -1,22 +1,23 @@
 /*
- * SPDX-FileCopyrightText: 2013, microG Project Team
+ * SPDX-FileCopyrightText: 2013 microG Project Team
  * SPDX-License-Identifier: Apache-2.0
  */
 
 buildscript {
     ext.cronetVersion = '91.0.4472.120.1'
-    ext.nlpVersion = '2.0-alpha7'
+    ext.nlpVersion = '2.0-alpha8'
     ext.safeParcelVersion = '1.7.0'
     ext.wearableVersion = '0.1.1'
 
     ext.kotlinVersion = '1.6.10'
     ext.coroutineVersion = '1.5.2'
 
-    ext.annotationVersion = '1.2.0'
+    ext.annotationVersion = '1.3.0'
     ext.appcompatVersion = '1.4.1'
     ext.coreVersion = '1.7.0'
     ext.fragmentVersion = '1.4.0'
     ext.lifecycleVersion = '2.4.0'
+    ext.loaderVersion = '1.1.0'
     ext.mediarouterVersion = '1.2.5'
     ext.multidexVersion = '2.0.1'
     ext.navigationVersion = '2.3.5'
